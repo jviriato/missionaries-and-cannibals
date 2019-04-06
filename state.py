@@ -47,10 +47,10 @@ class State:
         """
         Printa ambos os lados
         """
-        if  (self.boat_dir == 0):
+        if  (self.boat_dir == LEFT_SIDE):
             return '<Left Side {}, {}>b\t\t  <Right Side {}, {}">'.format(self.value[0], self.value[1],
             self.missionariesOnRight(), self.cannibalsOnRight())
-        elif(self.boat_dir == 1):
+        elif(self.boat_dir == RIGHT_SIDE):
             return '<Left Side {}, {}>\t\t b<Right Side {}, {}">'.format(self.value[0], self.value[1],
                             self.missionariesOnRight(), self.cannibalsOnRight())
 
