@@ -1,22 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from state import State
-from node import Node
-import collections
 from argparse import ArgumentParser
 
 def bfs(root): 
 	queue = [root]
-	solucao = []
+	path = []
 	for state in queue:
 		if state.isFinalState():
-			solucao = [state]
+			path = [state]
 			while state.parent:
-				solucao.insert(0, state.parent)
+				path.insert(0, state.parent)
 				state = state.parent
 			break
 		queue.extend(state.getValidStateSuccessors())
-	return solucao
+	return path
 
 def main():
 	parser = ArgumentParser()
@@ -28,9 +26,9 @@ def main():
 	LEFT_SIDE = 0
 	initial_state = State(args.missionaries, args.missionaries,
 	args.cannibals, args.cannibals, LEFT_SIDE, [(1,0), (2,0), (1,1), (0,1), (0,2)])
-	solucao = bfs(initial_state)
+	path = bfs(initial_state)
 	
-	for s in solucao:
+	for s in path:
 		print(s.printBothSides())
 
 if __name__ == "__main__":
