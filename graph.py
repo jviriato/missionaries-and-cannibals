@@ -7,6 +7,7 @@ class Graph:
     def __init__(self, root):
         """
         Constrói um grafo. 
+	    @param root: O primeiro nó do grafo/árvore
         """
         self.root = root
 
@@ -14,7 +15,6 @@ class Graph:
 	"""
 	Breadth-first search
 	Um algoritmo para percorrer uma árvore ou grafo.
-	@param root: O primeiro nó do grafo/árvore
 	"""
         queue = [self.root]
         path = []
