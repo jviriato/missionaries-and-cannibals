@@ -10,6 +10,17 @@ class State:
                        cannibals, cannibals_max, 
                        boat_dir, 
                        valid_operators, parent = None):
+        """
+            Constrói um novo objeto.
+            :param missionaries: Número de missionários no lado esquerdo
+            :param cannibals: Número de canibais no lado esquerdo
+            :param missionaries_max: Número total de missionários
+            :param cannibals_max: Número total de canibais
+            :param boat_dir: Direção do barco (esquerda, direita)
+            :param value: Tupla com missionários e canibais
+            :param valid_operators: Operadores válidos
+            :param parent: Pai do Estado
+        """
         self.missionaries = missionaries
         self.cannibals = cannibals
         self.missionaries_max = missionaries_max
@@ -33,6 +44,9 @@ class State:
         return hash(self.value)
 
     def printBothSides(self):
+        """
+        Printa ambos os lados
+        """
         if  (self.boat_dir == 0):
             return '<Left Side {}, {}>f\t\t<Right Side {}, {}">'.format(self.value[0], self.value[1],
             self.missionariesOnRight(), self.cannibalsOnRight())
@@ -50,9 +64,15 @@ class State:
         return self.value == (0, 0) and self.boat_dir == RIGHT_SIDE
     
     def cannibalsOnRight(self):
+        """
+        Retorna o número de canibais do lado direito
+        """
         return self.cannibals_max - self.cannibals
 
     def missionariesOnRight(self):
+        """
+        Retorna o número de missionarios do lado direito
+        """
         return self.missionaries_max - self.missionaries
 
     def isStateValid(self):
