@@ -91,10 +91,10 @@ class State:
         """
         Função auxiliar que trata de casos impossíveis.
         """
-        return (self.missionaries < 0           or 
-                self.cannibals    < 0           or
-                self.cannibalsOnRight() < 0     or
-                self.missionariesOnRight() < 0  or
+        return (self.missionaries           < 0     or 
+                self.cannibals              < 0     or
+                self.cannibalsOnRight()     < 0     or
+                self.missionariesOnRight()  < 0     or
                (self.boat_dir != 0 and self.boat_dir != 1))
 
     def _cannibalsOutnumbersMissionaries(self):
