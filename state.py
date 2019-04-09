@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from operator import sub, add
-
-LEFT_SIDE = 0
-RIGHT_SIDE = 1
+import constant
 
 class State:
     def __init__(self, missionaries, missionaries_max, 
@@ -47,10 +45,10 @@ class State:
         """
         Printa ambos os lados
         """
-        if  (self.boat_dir == LEFT_SIDE):
+        if  (self.boat_dir == constant.LEFT_SIDE):
             return '<Left Side {}, {}>b\t\t  <Right Side {}, {}">'.format(self.value[0], self.value[1],
             self.missionariesOnRight(), self.cannibalsOnRight())
-        elif(self.boat_dir == RIGHT_SIDE):
+        elif(self.boat_dir == constant.RIGHT_SIDE):
             return '<Left Side {}, {}>\t\t b<Right Side {}, {}">'.format(self.value[0], self.value[1],
                             self.missionariesOnRight(), self.cannibalsOnRight())
 
@@ -61,7 +59,7 @@ class State:
         
         Retorna um booleano. 
         """
-        return self.value == (0, 0) and self.boat_dir == RIGHT_SIDE
+        return self.value == (0, 0) and self.boat_dir == constant.RIGHT_SIDE
     
     def cannibalsOnRight(self):
         """
@@ -127,15 +125,15 @@ class State:
         """
         successors = []
         for operator in self.valid_operators:
-            if(self.boat_dir == LEFT_SIDE):
+            if(self.boat_dir == constant.LEFT_SIDE):
                 tuplex = self.__subTuple(self.value, operator)
                 st = State(tuplex[0], self.missionaries_max, tuplex[1], self.cannibals_max,
-                            RIGHT_SIDE, self.valid_operators, parent = self)
+                            constant.RIGHT_SIDE, self.valid_operators, parent = self)
                 successors.append(st)
-            elif (self.boat_dir == RIGHT_SIDE):
+            elif (self.boat_dir == constant.RIGHT_SIDE):
                 tuplex = self.__addTuple(self.value, operator)
                 st = State(tuplex[0], self.missionaries_max, tuplex[1], self.cannibals_max,
-                            LEFT_SIDE, self.valid_operators, parent = self)
+                            constant.LEFT_SIDE, self.valid_operators, parent = self)
                 successors.append(st)
         return successors
         

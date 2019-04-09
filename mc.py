@@ -3,9 +3,7 @@
 
 from graph import Graph
 from state import State
-
-LEFT_SIDE  = 0
-RIGHT_SIDE = 1
+import constant
 
 class MissionariesCannibals:
     def __init__(self, missionaries, cannibals, boat_size):
@@ -21,7 +19,7 @@ class MissionariesCannibals:
         self.operators      = self.getOperators(self.boat_size)
         self.initial_state  = State(self.missionaries, self.missionaries, 
                                     self.cannibals, self.cannibals,
-                                    LEFT_SIDE, self.operators)
+                                    constant.LEFT_SIDE, self.operators)
     def __str__(self):
         return '<Missionaries: {}, Cannibals: {}, Boat size: {}, Operators: {}>'.format(
                 self.missionaries, self.cannibals, self.boat_size, self.operators)
